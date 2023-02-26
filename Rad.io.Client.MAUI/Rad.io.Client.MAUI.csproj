@@ -15,7 +15,7 @@
 		<ApplicationTitle>Rad.io.Client.MAUI</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.rad.io.client.maui</ApplicationId>
+		<ApplicationId>com.sisimoski.rad.io.client.maui</ApplicationId>
 		<ApplicationIdGuid>71c03ead-0a0e-419c-9e0a-a33729f87c08</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="RadioBrowser" Version="0.6.1" />
 	</ItemGroup>
 
 </Project>
