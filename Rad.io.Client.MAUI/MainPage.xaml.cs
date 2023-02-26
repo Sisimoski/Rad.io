@@ -10,11 +10,16 @@ public partial class MainPage : ContentPage
     private readonly IStationService stationService;
     int count = 0;
 
-    public MainPage()
+    public MainPage(IStationService stationService)
     {
-        //this.stationService = stationService;
         InitializeComponent();
+        this.stationService = stationService;
     }
+
+    //protected async override void OnAppearing()
+    //{
+    //    base.OnAppearing();
+    //}
 
     private void OnCounterClicked(object sender, EventArgs e)
     {
