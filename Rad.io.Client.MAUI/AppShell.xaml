@@ -4,12 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Rad.io.Client.MAUI"
+    xmlns:page="clr-namespace:Rad.io.Client.MAUI.Pages"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+        <Tab Title="Now Playing">
+            <ShellContent ContentTemplate="{DataTemplate page:NowPlayingPage}"/>
+        </Tab>
+
+    </TabBar>
 
 </Shell>
 
