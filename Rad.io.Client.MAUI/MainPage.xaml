@@ -28,6 +28,10 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
+            <Label x:Name="RadioNameLabel"
+                Text="Radio:"
+                HorizontalOptions="Center"/>
+
             <Button
                 x:Name="CounterBtn"
                 Text="Click me"
