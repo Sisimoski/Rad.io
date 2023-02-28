@@ -66,11 +66,5 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="RadioBrowser" Version="0.6.1" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Pages\" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Pages\" />
-	</ItemGroup>
+	
 </Project>
