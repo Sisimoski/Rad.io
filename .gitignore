@@ -356,3 +356,7 @@ MigrationBackup/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+.DS_Store
+
+.meteor/
