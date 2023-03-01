@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Rad.io.Client.MAUI.ViewModels;
-using Rad.io.Client.MAUI.Views;
+using Rad.io.Client.MAUI.Pages;
 using RadioBrowser.Net.Services;
 
 namespace Rad.io.Client.MAUI;

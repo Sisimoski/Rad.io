@@ -3,7 +3,7 @@ using RadioBrowser.Net.Entities;
 using RadioBrowser.Net.Services;
 using System.Diagnostics;
 
-namespace Rad.io.Client.MAUI.Views;
+namespace Rad.io.Client.MAUI.Pages;
 
 public partial class NowPlayingPage : ContentPage
 {
