@@ -1,10 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using RadioBrowser.Net.Entities;
-using RadioBrowser.Net.Services;
-using RadioBrowser.Net.Converters;
-using System.Diagnostics;
-
-namespace Rad.io.Client.MAUI;
+﻿namespace Rad.io.Client.MAUI;
 
 public partial class MainPage : ContentPage
 {
