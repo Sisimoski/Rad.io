@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Rad.io.Client.MAUI.Pages.FlyoutPageDemo.DemoFlyoutPage"
+             Title="DemoFlyoutPage">
+    <FlyoutPage.Flyout>
+        <ContentPage Title="My App" BackgroundColor="DarkBlue">
+            <VerticalStackLayout>
+                <Label Text="This is FlyoutPage.Flyout"
+                       HorizontalTextAlignment="Center"
+                       Margin="20"
+                       FontSize="Header"
+                       FontAttributes="Bold"
+                       TextColor="White"/> 
+            </VerticalStackLayout>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <ContentPage BackgroundColor="DarkCyan">
+                    <VerticalStackLayout>
+                        <Label Text="This is FlyoutPage.Detail"
+                               HorizontalTextAlignment="Center"
+                               Margin="20"
+                               FontSize="Medium"
+                               TextColor="White"/>
+                    </VerticalStackLayout>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

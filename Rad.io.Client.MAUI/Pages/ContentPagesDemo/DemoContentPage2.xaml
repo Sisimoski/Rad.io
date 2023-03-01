@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Rad.io.Client.MAUI.Pages.ContentPagesDemo.DemoContentPage2"
+             Title="DemoContentPage2"
+             BackgroundColor="#674ea7">
+    <VerticalStackLayout>
+        <Label 
+            Text="This is Content Page 2!"
+            FontSize="Title"
+            FontAttributes="Bold"
+            Margin="20"
+            TextColor="White"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button x:Name="contentPage3Button"
+            Text="Open Content Page 3"
+                Margin="20"
+                Clicked="contentPage3Button_Clicked"/>
+        
+        <Button x:Name="closeButton"
+            Text="Close me"
+                Margin="20"
+                Clicked="closeButton_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>
