@@ -8,8 +8,9 @@
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <ShellContent Title="Now Playing" Icon="" ContentTemplate="{DataTemplate view:NowPlayingPage}"/>
-        <ShellContent Title="Explore" Icon="" ContentTemplate="{DataTemplate view:ExploreRadiosPage}"/>
+        <ShellContent Title="Now Playing" ContentTemplate="{DataTemplate view:NowPlayingPage}"/>
+        <ShellContent Title="Explore" ContentTemplate="{DataTemplate view:ExploreRadiosPage}"/>
+        <ShellContent Title="Library" ContentTemplate="{DataTemplate view:RadioLibraryPage}"/>
     </TabBar>
 
 </Shell>

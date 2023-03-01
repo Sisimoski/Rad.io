@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Rad.io.Client.MAUI.Pages.NowPlayingPage"
              xmlns:viewmodel="clr-namespace:Rad.io.Client.MAUI.ViewModels"
+             xmlns:views="clr-namespace:Rad.io.Client.MAUI.Views"
              x:DataType="viewmodel:NowPlayingViewModel"
              Title="NowPlayingPage">
     <VerticalStackLayout Margin="20" Spacing="20">
@@ -14,5 +15,6 @@
 
         <Button Text="Play" Clicked="Button_Clicked"/>
         <Button Text="Stop"/>
+        <views:NowPlayingPanel/>
     </VerticalStackLayout>
 </ContentPage>
