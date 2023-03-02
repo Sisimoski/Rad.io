@@ -7,13 +7,13 @@
         <FlexLayout Direction="Row"
                     JustifyContent="SpaceBetween"
                     AlignItems="Center">
-            <Frame HeightRequest="50"
+            <!--<Frame HeightRequest="50"
                    WidthRequest="50">
                 <Image Source="dotnet_bot.png"
                        Aspect="AspectFill"/>
             </Frame>
             <Label Text="newonce.radio" />
-            <Button Text="Play" />
+            <Button Text="Play" />-->
         </FlexLayout>
     </Frame>
 </ContentView>

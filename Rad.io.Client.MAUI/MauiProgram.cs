@@ -22,6 +22,8 @@ public static class MauiProgram
         builder.Services.AddRadioBrowserServices("Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15");
         builder.Services.AddTransient<NowPlayingPage>();
         builder.Services.AddTransient<NowPlayingViewModel>();
+        builder.Services.AddTransient<ExploreRadiosPage>();
+        builder.Services.AddTransient<ExploreRadiosViewModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();
