@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Rad.io.Client.MAUI.ViewModels"
+             xmlns:radios="clr-namespace:RadioBrowser.Models;assembly=RadioBrowser"
              x:Class="Rad.io.Client.MAUI.Pages.ExploreRadiosPage"
              x:DataType="viewmodel:ExploreRadiosViewModel"
              Title="ExploreRadiosPage">
@@ -9,15 +10,17 @@
         <Grid RowDefinitions="Auto, Auto">
             <Entry Grid.Row="0" Placeholder="Search"/>
             <CollectionView Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding Countries}">
+                <CollectionView.EmptyView>
+                    <Label Text="Loading..."/>
+                </CollectionView.EmptyView>
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="5"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="radios:NameAndCount">
                         <VerticalStackLayout VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Secondary}">
-                            <Label Text="{Binding Countries}"/>
-                            <!--<Label VerticalOptions="CenterAndExpand" Text="{Binding Country.Name}" TextColor="{StaticResource Gray900}"/>
-                            <Label VerticalOptions="CenterAndExpand" Text="{Binding Country.Name}" TextColor="{StaticResource Gray600}"/>-->
+                            <Label VerticalOptions="CenterAndExpand" Text="{Binding Name}" TextColor="{StaticResource Gray900}"/>
+                            <Label VerticalOptions="CenterAndExpand" Text="{Binding Stationcount}" TextColor="{StaticResource Gray600}"/>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

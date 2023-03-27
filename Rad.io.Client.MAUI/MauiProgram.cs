@@ -3,6 +3,7 @@ using Rad.io.Client.MAUI.ViewModels;
 using Rad.io.Client.MAUI.Pages;
 using RadioBrowser.Net.Services;
 using CommunityToolkit.Maui;
+using RadioBrowser;
 
 namespace Rad.io.Client.MAUI;
 
@@ -20,6 +21,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
         builder.Services.AddRadioBrowserServices("Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15");
+        builder.Services.AddSingleton<IRadioBrowserClient>(new RadioBrowserClient(apiUrl: "de1.api.radio-browser.info"));
         builder.Services.AddTransient<NowPlayingPage>();
         builder.Services.AddTransient<NowPlayingViewModel>();
         builder.Services.AddTransient<ExploreRadiosPage>();
