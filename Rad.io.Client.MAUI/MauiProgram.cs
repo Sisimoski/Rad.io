@@ -4,6 +4,7 @@ using Rad.io.Client.MAUI.Pages;
 using RadioBrowser.Net.Services;
 using CommunityToolkit.Maui;
 using RadioBrowser;
+using Rad.io.Client.MAUI.Views;
 
 namespace Rad.io.Client.MAUI;
 
@@ -26,6 +27,8 @@ public static class MauiProgram
         builder.Services.AddTransient<NowPlayingViewModel>();
         builder.Services.AddTransient<ExploreRadiosPage>();
         builder.Services.AddTransient<ExploreRadiosViewModel>();
+        builder.Services.AddTransient<ExploreCountriesPage>();
+        builder.Services.AddTransient<ExploreCountriesViewModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();

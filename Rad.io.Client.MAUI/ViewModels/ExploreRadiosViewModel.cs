@@ -7,57 +7,60 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Web;
 
 namespace Rad.io.Client.MAUI.ViewModels;
 
+[QueryProperty(nameof(SelectedCountry), "SelectedCountry")]
 public class ExploreRadiosViewModel : INotifyPropertyChanged
 {
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected void RaisePropertyChanged(string propertyName = null)
+    => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
     private readonly IRadioBrowserClient radioBrowserClient;
-    private List<NameAndCount> _countries;
-    public List<NameAndCount> Countries
+    private NameAndCount selectedCountry;
+    private List<StationInfo> stations;
+    public List<StationInfo> Stations
     {
-        get => _countries;
+        get => stations;
         set
         {
-            _countries = value;
+            stations = value;
             RaisePropertyChanged();
         }
     }
-
-    private readonly IStationService stationService;
-    private readonly ICountryService countryService;
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    public ExploreRadiosViewModel()
+    public NameAndCount SelectedCountry
     {
+        get => selectedCountry;
+        set
+        {
+            selectedCountry = value;
+            RaisePropertyChanged();
+        }
     }
-
-    public ExploreRadiosViewModel(IRadioBrowserClient radioBrowserClient, IStationService stationService, ICountryService countryService)
+    public ExploreRadiosViewModel(IRadioBrowserClient radioBrowserClient)
     {
         this.radioBrowserClient = radioBrowserClient;
-        this.stationService = stationService;
-        this.countryService = countryService;
-
-        InitializeDataAsync();
     }
 
-    private async Task InitializeDataAsync()
+    public async Task InitializeData()
     {
         try
         {
-            Countries = await radioBrowserClient.Lists.GetCountriesAsync();
-            foreach (var result in Countries)
+            Stations = await radioBrowserClient.Search.AdvancedAsync(new AdvancedSearchOptions
+            {
+                Country = SelectedCountry.Name
+            });
+            foreach (var result in Stations)
             {
                 Debug.WriteLine(result.Name);
             }
 
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             Debug.WriteLine(e);
         }
     }
-
-    protected void RaisePropertyChanged(string propertyName = null)
-        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

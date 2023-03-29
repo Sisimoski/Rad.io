@@ -5,9 +5,17 @@ namespace Rad.io.Client.MAUI.Pages;
 
 public partial class ExploreRadiosPage : ContentPage
 {
-    public ExploreRadiosPage(ExploreRadiosViewModel radiosViewModel)
+    private readonly ExploreRadiosViewModel exploreRadiosViewModel;
+    public ExploreRadiosPage(ExploreRadiosViewModel exploreRadiosViewModel)
     {
         InitializeComponent();
-        BindingContext = radiosViewModel;
+        this.exploreRadiosViewModel = exploreRadiosViewModel;
+        BindingContext = exploreRadiosViewModel;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        exploreRadiosViewModel.InitializeData();
     }
 }
