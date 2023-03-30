@@ -1,4 +1,5 @@
-﻿using RadioBrowser;
+﻿using Rad.io.Client.MAUI.Pages;
+using RadioBrowser;
 using RadioBrowser.Models;
 using RadioBrowser.Net.Entities;
 using RadioBrowser.Net.Services;
@@ -8,6 +9,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Web;
+using System.Windows.Input;
 
 namespace Rad.io.Client.MAUI.ViewModels;
 
@@ -16,10 +18,11 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
     protected void RaisePropertyChanged(string propertyName = null)
-    => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     private readonly IRadioBrowserClient radioBrowserClient;
     private NameAndCount selectedCountry;
+    private StationInfo selectedRadio;
     private List<StationInfo> stations;
     public List<StationInfo> Stations
     {
@@ -36,6 +39,15 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
         set
         {
             selectedCountry = value;
+            RaisePropertyChanged();
+        }
+    }
+    public StationInfo SelectedRadio
+    {
+        get => selectedRadio;
+        set
+        {
+            selectedRadio = value;
             RaisePropertyChanged();
         }
     }
@@ -63,4 +75,12 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
             Debug.WriteLine(e);
         }
     }
+
+    public ICommand NavigateTo => new Command(() => {
+        var navParam = new Dictionary<string, object>
+            {
+                {"CurrentStation", SelectedRadio }
+            };
+        Shell.Current.GoToAsync($"{nameof(NowPlayingPage)}", navParam);
+    });
 }

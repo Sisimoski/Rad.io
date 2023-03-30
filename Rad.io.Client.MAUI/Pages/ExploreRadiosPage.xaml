@@ -8,7 +8,7 @@
              Title="{Binding SelectedCountry.Name}">
     <Grid RowDefinitions="Auto, Auto">
         <Entry Grid.Row="0" Placeholder="Search"/>
-        <CollectionView x:Name="RadiosList" Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding Stations}">
+        <CollectionView x:Name="RadiosList" Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding Stations}" SelectedItem="{Binding SelectedRadio}" SelectionChangedCommand="{Binding NavigateTo}">
             <CollectionView.EmptyView>
                 <Label Text="Loading..."/>
             </CollectionView.EmptyView>

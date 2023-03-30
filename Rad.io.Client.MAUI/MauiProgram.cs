@@ -23,7 +23,7 @@ public static class MauiProgram
             });
         builder.Services.AddRadioBrowserServices("Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15");
         builder.Services.AddSingleton<IRadioBrowserClient>(new RadioBrowserClient(apiUrl: "de1.api.radio-browser.info"));
-        builder.Services.AddTransient<NowPlayingPage>();
+        builder.Services.AddSingleton<NowPlayingPage>();
         builder.Services.AddTransient<NowPlayingViewModel>();
         builder.Services.AddTransient<ExploreRadiosPage>();
         builder.Services.AddTransient<ExploreRadiosViewModel>();

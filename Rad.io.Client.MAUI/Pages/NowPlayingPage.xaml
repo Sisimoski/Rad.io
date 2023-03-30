@@ -9,13 +9,17 @@
              Title="NowPlayingPage">
     <VerticalStackLayout Margin="20" Spacing="10">
         <Label x:Name="RadioNameLabel"
-               Text="{Binding Name}"
+               Text="{Binding CurrentStation.Name}"
                BackgroundColor="{StaticResource Blue100Accent}"
                VerticalOptions="Center"
-               HorizontalOptions="Center"/>
+               HorizontalOptions="Center"
+               />
+        <toolkit:MediaElement
+                ShouldAutoPlay="True"
+                Source="{Binding CurrentStation.Url}"/>
 
-        <Button Text="Play" Clicked="Button_Clicked"/>
-        <Button Text="Stop"/>
+        <Button Text="Play" Command="{Binding OnPlay}"/>
+        <Button Text="Stop" Command="{Binding OnStopPressed}"/>
         <views:NowPlayingPanel/>
     </VerticalStackLayout>
 </ContentPage>
