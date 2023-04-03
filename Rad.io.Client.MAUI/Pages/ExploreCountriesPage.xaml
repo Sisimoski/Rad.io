@@ -6,21 +6,48 @@
              xmlns:radios="clr-namespace:RadioBrowser.Models;assembly=RadioBrowser"
              x:DataType="viewmodel:ExploreCountriesViewModel"
              Title="ExploreCountriesPage">
-    <Grid RowDefinitions="Auto, Auto">
-        <Entry Grid.Row="0" Placeholder="Search"/>
-        <CollectionView x:Name="CountriesList" Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding Countries}" SelectedItem="{Binding SelectedItem}" SelectionChangedCommand="{Binding NavigateTo}">
+    <Grid RowDefinitions="Auto, *">
+        <Entry Grid.Row="0"
+               Margin="12"
+               Placeholder="Search"
+               Text="{Binding EntryQuery}"/>
+        <CollectionView x:Name="CountriesList"
+                        Grid.Row="1"
+                        Margin="24,0,24,0"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding FilteredCountries}"
+                        SelectedItem="{Binding SelectedItem}"
+                        SelectionChangedCommand="{Binding NavigateTo}">
             <CollectionView.EmptyView>
-                <Label Text="Loading..."/>
+                <ActivityIndicator IsRunning="True"/>
             </CollectionView.EmptyView>
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="5"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="radios:NameAndCount">
-                    <VerticalStackLayout VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Secondary}">
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Name}"
+                               TextColor="{StaticResource Gray900}"/>
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="{Binding Stationcount}"
+                               TextColor="{StaticResource Gray400}"/>
+
+                    </Grid>
+                    <!--<VerticalStackLayout VerticalOptions="CenterAndExpand">
                         <Label VerticalOptions="CenterAndExpand" Text="{Binding Name}" TextColor="{StaticResource Gray900}"/>
-                        <Label VerticalOptions="CenterAndExpand" Text="{Binding Stationcount}" TextColor="{StaticResource Gray600}"/>
-                    </VerticalStackLayout>
+                        <Label VerticalOptions="CenterAndExpand" Text="{Binding Stationcount}" TextColor="{StaticResource Gray400}"/>
+                    </VerticalStackLayout>-->
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

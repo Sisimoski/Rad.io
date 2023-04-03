@@ -14,6 +14,9 @@ namespace Rad.io.Client.MAUI.ViewModels
         private readonly IRadioBrowserClient radioBrowserClient;
         private NameAndCount selectedItem;
         private List<NameAndCount> _countries;
+        private List<NameAndCount> filteredCountries;
+        private string entryQuery;
+
         public List<NameAndCount> Countries
         {
             get => _countries;
@@ -23,12 +26,29 @@ namespace Rad.io.Client.MAUI.ViewModels
                 RaisePropertyChanged();
             }
         }
+        public List<NameAndCount> FilteredCountries
+        {
+            get
+            {
+                if (EntryQuery is null) return Countries;
+                return Countries.Where(value => value.Name.Contains(EntryQuery, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+        }
         public NameAndCount SelectedItem
         {
             get => selectedItem;
             set
             {
                 selectedItem = value;
+                RaisePropertyChanged();
+            }
+        }
+        public string EntryQuery
+        {
+            get => entryQuery;
+            set
+            {
+                entryQuery = value;
                 RaisePropertyChanged();
             }
         }
@@ -62,6 +82,7 @@ namespace Rad.io.Client.MAUI.ViewModels
             {
                 {"SelectedCountry", SelectedItem }
             };
+            //await App.Current.MainPage.Navigation.PushAsync(new ExploreRadiosPage());
             Shell.Current.GoToAsync($"{nameof(ExploreRadiosPage)}", navParam);
         });
 

@@ -4,14 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Rad.io.Client.MAUI"
-    xmlns:view="clr-namespace:Rad.io.Client.MAUI.Pages"
+    xmlns:page="clr-namespace:Rad.io.Client.MAUI.Pages"
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <ShellContent Title="Explore" ContentTemplate="{DataTemplate view:ExploreCountriesPage}"/>
-        <ShellContent Title="Library" ContentTemplate="{DataTemplate view:RadioLibraryPage}"/>
-        <ShellContent Title="Now Playing" ContentTemplate="{DataTemplate view:NowPlayingPage}"/>
+        <ShellContent Title="Explore" ContentTemplate="{DataTemplate page:ExploreCountriesPage}"/>
+        <ShellContent Title="Library" ContentTemplate="{DataTemplate page:RadioLibraryPage}"/>
+        <ShellContent Title="Now Playing" ContentTemplate="{DataTemplate page:NowPlayingPage}"/>
     </TabBar>
-
 </Shell>
 

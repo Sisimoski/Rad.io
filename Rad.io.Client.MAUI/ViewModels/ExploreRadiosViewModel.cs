@@ -24,6 +24,9 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
     private NameAndCount selectedCountry;
     private StationInfo selectedRadio;
     private List<StationInfo> stations;
+    private List<StationInfo> filteredStations;
+    private string entryQuery;
+
     public List<StationInfo> Stations
     {
         get => stations;
@@ -49,6 +52,23 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
         {
             selectedRadio = value;
             RaisePropertyChanged();
+        }
+    }
+    public string EntryQuery
+    {
+        get => entryQuery;
+        set
+        {
+            entryQuery = value;
+            RaisePropertyChanged();
+        }
+    }
+    public List<StationInfo> FilteredStations
+    {
+        get
+        {
+            if (entryQuery is null) return Stations;
+            return Stations.Where(value => value.Name.Contains(EntryQuery, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
     public ExploreRadiosViewModel(IRadioBrowserClient radioBrowserClient)
