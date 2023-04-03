@@ -1,4 +1,4 @@
-﻿namespace Rad.io.Client.MAUI.Views;
+﻿namespace Rad.io.Client.MAUI.Pages;
 
 public partial class RadioLibraryPage : ContentPage
 {
