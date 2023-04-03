@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Rad.io.Client.MAUI.Pages.ExploreCountriesPage"
+             xmlns:viewmodel="clr-namespace:Rad.io.Client.MAUI.ViewModels"
+             xmlns:radios="clr-namespace:RadioBrowser.Models;assembly=RadioBrowser"
+             x:DataType="viewmodel:ExploreCountriesViewModel"
+             Title="ExploreCountriesPage">
+    <Grid RowDefinitions="Auto, *">
+        <Entry Grid.Row="0"
+               Margin="12"
+               Placeholder="Search"
+               Text="{Binding EntryQuery}"/>
+        <CollectionView x:Name="CountriesList"
+                        Grid.Row="1"
+                        Margin="24,0,24,0"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding FilteredCountries}"
+                        SelectedItem="{Binding SelectedItem}"
+                        SelectionChangedCommand="{Binding NavigateTo}">
+            <CollectionView.EmptyView>
+                <ActivityIndicator IsRunning="True"/>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="radios:NameAndCount">
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Name}"
+                               TextColor="{StaticResource Gray900}"/>
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="{Binding Stationcount}"
+                               TextColor="{StaticResource Gray400}"/>
+
+                    </Grid>
+                    <!--<VerticalStackLayout VerticalOptions="CenterAndExpand">
+                        <Label VerticalOptions="CenterAndExpand" Text="{Binding Name}" TextColor="{StaticResource Gray900}"/>
+                        <Label VerticalOptions="CenterAndExpand" Text="{Binding Stationcount}" TextColor="{StaticResource Gray400}"/>
+                    </VerticalStackLayout>-->
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

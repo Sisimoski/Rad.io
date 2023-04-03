@@ -1,44 +1,64 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows.Input;
+using CommunityToolkit.Maui.Views;
+using RadioBrowser;
+using RadioBrowser.Models;
 
 namespace Rad.io.Client.MAUI.ViewModels
 {
-    internal class NowPlayingViewModel : INotifyPropertyChanged
+    [QueryProperty(nameof(CurrentStation), "CurrentStation")]
+    public class NowPlayingViewModel : INotifyPropertyChanged
     {
-        private Guid id;
-        private string name = "";
-        private string url = "";
+        private IRadioBrowserClient radioBrowserClient;
+        private StationInfo currentStation;
+        private MediaElement mediaElement = new MediaElement();
 
         public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged(string name) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        protected void RaisePropertyChanged(string propertyName = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        [JsonProperty("stationuuid")]
-        public Guid Id
+        public StationInfo CurrentStation
         {
-            get => id; set
+            get => currentStation;
+            set
             {
-                id = value;
-                OnPropertyChanged(nameof(Id));
+                currentStation = value;
+                RaisePropertyChanged();
+            }
+        }
+        public MediaElement MediaElement {
+            get => mediaElement;
+            set
+            {
+                mediaElement = value;
+                RaisePropertyChanged();
             }
         }
 
-        [JsonProperty("name")]
-        public string Name
+        public NowPlayingViewModel(IRadioBrowserClient radioBrowserClient)
         {
-            get => name; set
-            {
-                name = value;
-                OnPropertyChanged(nameof(Name));
-            }
+            this.radioBrowserClient = radioBrowserClient;
         }
-        [JsonProperty("url")]
-        public string Url
+
+        public ICommand OnStopPressed => new Command(() => {
+            mediaElement.Stop();
+        });
+
+        public ICommand OnPlay => new Command(() =>
         {
-            get => url; set
+            mediaElement.Source = "https://rs9-krk2-cyfronet.rmfstream.pl/RMFMAXXX48";
+        });
+
+        private async Task InitializeDataAsync()
+        {
+            try
             {
-                url = value;
-                OnPropertyChanged(nameof(Url));
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
             }
         }
     }
