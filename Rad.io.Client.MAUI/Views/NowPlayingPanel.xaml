@@ -5,30 +5,32 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:NowPlayingViewModel"
              x:Class="Rad.io.Client.MAUI.Views.NowPlayingPanel">
-    <Frame BorderColor="Gray" BackgroundColor="LightGray">
-        <FlexLayout JustifyContent="SpaceBetween">
-            <Image Source="{Binding CurrentStation.Favicon}"
-                       BackgroundColor="DarkBlue"
+    <Frame BorderColor="Gray">
+        <Grid ColumnDefinitions="*, Auto, *">
+            <FlexLayout Grid.Column="0"
+                        AlignItems="Center">
+                <Image Source="{Binding CurrentStation.Favicon}"
                        Margin="0,0,12,0"
                        Aspect="AspectFill"
                        HeightRequest="50"
                        WidthRequest="50"/>
-                <Label Text="{Binding CurrentStation.Name}"
-                       BackgroundColor="LightBlue"/>
+                <Label Text="{Binding CurrentStation.Name}"/>
 
-            <toolkit:MediaElement
+            </FlexLayout>
+            <toolkit:MediaElement x:Name="mediaElement" Grid.Column="1"
                 ShouldShowPlaybackControls="False"
                 BackgroundColor="DarkCyan"
                 ShouldAutoPlay="True"
                 Source="{Binding CurrentStation.Url}"/>
-            <HorizontalStackLayout Spacing="5">
-                <Button Text="Play"/>
-                <Button Text="Stop"/>
+            <FlexLayout Grid.Column="2"
+                        JustifyContent="End">
+                <HorizontalStackLayout Spacing="5">
+                    <Button x:Name="playStopButton" Text="Play/Stop" Clicked="playStopButton_Clicked"/>
 
-            </HorizontalStackLayout>
+                </HorizontalStackLayout>
+                    
+            </FlexLayout>
 
-        </FlexLayout>
-                
-
+        </Grid>
     </Frame>
 </ContentView>

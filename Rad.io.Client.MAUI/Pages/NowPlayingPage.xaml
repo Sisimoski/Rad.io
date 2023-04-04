@@ -8,7 +8,27 @@
              x:DataType="viewmodel:NowPlayingViewModel"
              Title="NowPlayingPage">
     <VerticalStackLayout Margin="20" Spacing="10">
-        
+        <Frame BorderColor="AliceBlue">
+            <Grid RowDefinitions="Auto, *, Auto">
+                <Label Text="Details"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+                <Grid Grid.Row="1">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding CurrentStation.Name}"/>
+                        <Label Text="{Binding CurrentStation.Url}"/>
+                    </VerticalStackLayout>
+                    
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label Text="{Binding CurrentStation.Codec}"/>
+                </Grid>
+                
+
+            </Grid>
+
+
+        </Frame>
         <views:NowPlayingPanel/>
     </VerticalStackLayout>
 </ContentPage>
