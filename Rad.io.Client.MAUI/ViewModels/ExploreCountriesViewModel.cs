@@ -12,7 +12,6 @@ namespace Rad.io.Client.MAUI.ViewModels
     public class ExploreCountriesViewModel : INotifyPropertyChanged
     {
         private readonly IRadioBrowserClient radioBrowserClient;
-        private NameAndCount selectedItem;
         private List<NameAndCount> _countries;
         private List<NameAndCount> filteredCountries;
         private string entryQuery;
@@ -34,15 +33,7 @@ namespace Rad.io.Client.MAUI.ViewModels
                 return Countries.Where(value => value.Name.Contains(EntryQuery, StringComparison.OrdinalIgnoreCase)).ToList();
             }
         }
-        public NameAndCount SelectedItem
-        {
-            get => selectedItem;
-            set
-            {
-                selectedItem = value;
-                RaisePropertyChanged();
-            }
-        }
+
         public string EntryQuery
         {
             get => entryQuery;
@@ -77,13 +68,13 @@ namespace Rad.io.Client.MAUI.ViewModels
             }
         }
 
-        public ICommand NavigateTo => new Command(() => {
+        public ICommand NavigateTo => new Command(async (SelectedItem) => {
             var navParam = new Dictionary<string, object>
             {
                 {"SelectedCountry", SelectedItem }
             };
             //await App.Current.MainPage.Navigation.PushAsync(new ExploreRadiosPage());
-            Shell.Current.GoToAsync($"{nameof(ExploreRadiosPage)}", navParam);
+            await Shell.Current.GoToAsync($"{nameof(ExploreRadiosPage)}", navParam);
         });
 
         public event PropertyChangedEventHandler PropertyChanged;

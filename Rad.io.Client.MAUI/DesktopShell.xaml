@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Rad.io.Client.MAUI.DesktopShell"
+             xmlns:page="clr-namespace:Rad.io.Client.MAUI.Pages"
+             Shell.FlyoutBehavior="Locked"
+             FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}">
+    <FlyoutItem Title="Explore">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate page:ExploreCountriesPage}"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Library">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate page:RadioLibraryPage}" Route="RadioLibraryPage"/>
+
+        </Tab>
+    </FlyoutItem>
+    <MenuFlyoutSeparator/>
+    <FlyoutItem Title="Now Playing">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate page:NowPlayingPage}" Route="NowPlayingPage"/>
+        </Tab>
+    </FlyoutItem>
+
+</Shell>

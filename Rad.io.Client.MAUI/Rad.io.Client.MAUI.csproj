@@ -89,8 +89,4 @@
 	    <SubType>Designer</SubType>
 	  </BundleResource>
 	</ItemGroup>
-	<ItemGroup>
-	  <MauiXaml Remove="Resources\Styles\Styles.xaml" />
-	  <MauiXaml Remove="Resources\Styles\Colors.xaml" />
-	</ItemGroup>
 </Project>

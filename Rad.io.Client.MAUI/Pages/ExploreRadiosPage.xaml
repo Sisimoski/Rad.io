@@ -10,15 +10,13 @@
     <Grid RowDefinitions="Auto, *">
         <Entry Grid.Row="0"
                Margin="12"
-               Placeholder="Search"
+               Placeholder="Search radio..."
                Text="{Binding EntryQuery}"/>
         <CollectionView x:Name="RadiosList"
                         Grid.Row="1"
                         Margin="24,0,24,0"
                         SelectionMode="Single"
-                        ItemsSource="{Binding FilteredStations}"
-                        SelectedItem="{Binding SelectedRadio}"
-                        SelectionChangedCommand="{Binding NavigateTo}">
+                        ItemsSource="{Binding FilteredStations}">
             <CollectionView.EmptyView>
                 <ActivityIndicator IsRunning="True"/>
             </CollectionView.EmptyView>
@@ -28,6 +26,12 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="radios:StationInfo">
                     <Grid Padding="10">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer x:DataType="viewmodel:ExploreRadiosViewModel"
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExploreRadiosViewModel}}, Path=NavigateTo}"
+                                                  CommandParameter="{Binding .}"/>
+
+                        </Grid.GestureRecognizers>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>

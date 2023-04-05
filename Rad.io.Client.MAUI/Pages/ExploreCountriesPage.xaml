@@ -5,19 +5,43 @@
              xmlns:viewmodel="clr-namespace:Rad.io.Client.MAUI.ViewModels"
              xmlns:radios="clr-namespace:RadioBrowser.Models;assembly=RadioBrowser"
              x:DataType="viewmodel:ExploreCountriesViewModel"
-             Title="ExploreCountriesPage">
-    <Grid RowDefinitions="Auto, *">
+             Shell.NavBarIsVisible="False"
+             Title="ExploreCountriesPage"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource Gray950}, Light={StaticResource Gray200}}">
+    <Grid RowDefinitions="Auto, *" ColumnDefinitions="*">
         <Entry Grid.Row="0"
+               Grid.Column="0"
                Margin="12"
-               Placeholder="Search"
+               Placeholder="Search country..."
                Text="{Binding EntryQuery}"/>
         <CollectionView x:Name="CountriesList"
                         Grid.Row="1"
-                        Margin="24,0,24,0"
+                        Grid.Column="0"
                         SelectionMode="Single"
                         ItemsSource="{Binding FilteredCountries}"
-                        SelectedItem="{Binding SelectedItem}"
-                        SelectionChangedCommand="{Binding NavigateTo}">
+                        Margin="20">
+            <CollectionView.Header>
+                <Border Background="{StaticResource Gray900}"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        Padding="20"
+                        Margin="10">
+                    <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="10">
+                    <Label Grid.Row="0"
+                           TextColor="{StaticResource Primary}"
+                           Text="Explore"
+                           FontSize="56"/>
+                    <BoxView Grid.Row="1"
+                             Color="{StaticResource Gray600}"
+                             HeightRequest="1"/>
+                        <Label Text="Lorem ipsum."
+                               Grid.Row="2"
+                               TextColor="{StaticResource Gray200}"/>
+                </Grid>
+                </Border>
+                
+
+            </CollectionView.Header>
             <CollectionView.EmptyView>
                 <ActivityIndicator IsRunning="True"/>
             </CollectionView.EmptyView>
@@ -27,6 +51,12 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="radios:NameAndCount">
                     <Grid Padding="10">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer x:DataType="viewmodel:ExploreCountriesViewModel"
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExploreCountriesViewModel}}, Path=NavigateTo}"
+                                                  CommandParameter="{Binding .}"/>
+
+                        </Grid.GestureRecognizers>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>

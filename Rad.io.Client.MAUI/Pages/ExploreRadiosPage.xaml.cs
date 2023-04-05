@@ -13,9 +13,9 @@ public partial class ExploreRadiosPage : ContentPage
         BindingContext = exploreRadiosViewModel;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        exploreRadiosViewModel.InitializeData();
+        await exploreRadiosViewModel.InitializeDataAsync();
     }
 }

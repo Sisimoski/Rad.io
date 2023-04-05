@@ -22,7 +22,6 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
 
     private readonly IRadioBrowserClient radioBrowserClient;
     private NameAndCount selectedCountry;
-    private StationInfo selectedRadio;
     private List<StationInfo> stations;
     private List<StationInfo> filteredStations;
     private string entryQuery;
@@ -45,15 +44,7 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
             RaisePropertyChanged();
         }
     }
-    public StationInfo SelectedRadio
-    {
-        get => selectedRadio;
-        set
-        {
-            selectedRadio = value;
-            RaisePropertyChanged();
-        }
-    }
+
     public string EntryQuery
     {
         get => entryQuery;
@@ -76,7 +67,7 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
         this.radioBrowserClient = radioBrowserClient;
     }
 
-    public async Task InitializeData()
+    public async Task InitializeDataAsync()
     {
         try
         {
@@ -96,11 +87,11 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
         }
     }
 
-    public ICommand NavigateTo => new Command(() => {
+    public ICommand NavigateTo => new Command(async (value) => {
         var navParam = new Dictionary<string, object>
             {
-                {"CurrentStation", SelectedRadio }
+                {"CurrentStation", value }
             };
-        Shell.Current.GoToAsync($"{nameof(NowPlayingPage)}", navParam);
+        await Shell.Current.GoToAsync($"{nameof(NowPlayingPage)}", false, navParam);
     });
 }

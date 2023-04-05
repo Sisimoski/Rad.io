@@ -8,6 +8,10 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new AppShell();
+#if WINDOWS || MACCATALYST
+        MainPage = new DesktopShell();
+#else
+        MainPage = new Shell();
+#endif
     }
 }
