@@ -36,18 +36,12 @@
                             <ColumnDefinition Width="Auto"/>
 
                         </Grid.ColumnDefinitions>
-                        <Label Text="{Binding Name}"
-                               TextColor="{StaticResource Gray900}"/>
+                        <Label Text="{Binding Name}"/>
                         <Label Grid.Row="1"
-                               Grid.Column="0"
                                Text="{Binding Stationcount}"
                                TextColor="{StaticResource Gray400}"/>
 
                     </Grid>
-                    <!--<VerticalStackLayout VerticalOptions="CenterAndExpand">
-                        <Label VerticalOptions="CenterAndExpand" Text="{Binding Name}" TextColor="{StaticResource Gray900}"/>
-                        <Label VerticalOptions="CenterAndExpand" Text="{Binding Stationcount}" TextColor="{StaticResource Gray400}"/>
-                    </VerticalStackLayout>-->
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

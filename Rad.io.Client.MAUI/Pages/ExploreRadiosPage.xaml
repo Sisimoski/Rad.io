@@ -45,8 +45,7 @@
                                HeightRequest="50"
                                WidthRequest="50"/>
                         <Label Grid.Column="1"
-                               Text="{Binding Name}"
-                               TextColor="{StaticResource Gray900}"/>
+                               Text="{Binding Name}"/>
                         <Label Grid.Row="1"
                                Grid.Column="1"
                                Text="{Binding Url}"

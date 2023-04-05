@@ -12,9 +12,7 @@ namespace Rad.io.Client.MAUI.ViewModels
     {
         private IRadioBrowserClient radioBrowserClient;
         private StationInfo currentStation;
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void RaisePropertyChanged(string propertyName = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        
 
         public StationInfo CurrentStation
         {
@@ -35,12 +33,16 @@ namespace Rad.io.Client.MAUI.ViewModels
         {
             try
             {
-
+                
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e);
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void RaisePropertyChanged(string propertyName = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

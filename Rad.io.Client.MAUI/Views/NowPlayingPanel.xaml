@@ -3,32 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Rad.io.Client.MAUI.ViewModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:Rad.io.Client.MAUI"
              x:DataType="viewmodel:NowPlayingViewModel"
              x:Class="Rad.io.Client.MAUI.Views.NowPlayingPanel">
+    <ContentView.Resources>
+        <local:ListToString x:Key="ListToStringConverter"/>
+
+    </ContentView.Resources>
     <Frame BorderColor="Gray">
         <Grid ColumnDefinitions="*, Auto, *">
-            <FlexLayout Grid.Column="0"
-                        AlignItems="Center">
+            <HorizontalStackLayout Grid.Column="0">
                 <Image Source="{Binding CurrentStation.Favicon}"
                        Margin="0,0,12,0"
                        Aspect="AspectFill"
                        HeightRequest="50"
                        WidthRequest="50"/>
-                <Label Text="{Binding CurrentStation.Name}"/>
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Label Text="{Binding CurrentStation.Name}" FontAttributes="Bold" FontSize="Large"/>
+                    <Label Text="{Binding CurrentStation.Tags, Converter={StaticResource ListToStringConverter}}" FontSize="Small" TextColor="{StaticResource Gray300}"/>
+                </VerticalStackLayout>
 
-            </FlexLayout>
+            </HorizontalStackLayout>
             <toolkit:MediaElement x:Name="mediaElement" Grid.Column="1"
                 ShouldShowPlaybackControls="False"
-                BackgroundColor="DarkCyan"
                 ShouldAutoPlay="True"
                 Source="{Binding CurrentStation.Url}"/>
             <FlexLayout Grid.Column="2"
                         JustifyContent="End">
                 <HorizontalStackLayout Spacing="5">
-                    <Button x:Name="playStopButton" Text="Play/Stop" Clicked="playStopButton_Clicked"/>
+                    <HorizontalStackLayout>
+                        <Image HeightRequest="30"
+                               WidthRequest="30"
+                               Source="volume_down_fill.png"/>
+                        <Slider Value="{Binding Source={x:Reference mediaElement}, Path=Volume}"
+                                Margin="10"
+                                Minimum="0"
+                                Maximum="1"/>
+                        <Image HeightRequest="30"
+                               WidthRequest="30"
+                               Source="volume_up_fill.png"/>
+
+                    </HorizontalStackLayout>
+                    
+                    <ImageButton x:Name="playStopButton"
+                                 Clicked="playStopButton_Clicked"
+                                 HeightRequest="20"
+                                 WidthRequest="20"
+                                 Source="play_pause.png"/>
 
                 </HorizontalStackLayout>
-                    
+
             </FlexLayout>
 
         </Grid>
