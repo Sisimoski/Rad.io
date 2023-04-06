@@ -5,6 +5,14 @@
              xmlns:page="clr-namespace:Rad.io.Client.MAUI.Pages"
              Shell.FlyoutBehavior="Locked"
              FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}">
+    <Shell.FlyoutHeader>
+        <VerticalStackLayout Padding="12">
+            <Label Text="Rad.io"
+                   FontAttributes="Bold"
+                   FontSize="Title"
+                   TextColor="{StaticResource Primary}"/>
+        </VerticalStackLayout>
+    </Shell.FlyoutHeader>
     <FlyoutItem Title="Explore">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate page:ExploreCountriesPage}"/>
@@ -16,10 +24,9 @@
 
         </Tab>
     </FlyoutItem>
-    <MenuFlyoutSeparator/>
     <FlyoutItem Title="Now Playing">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate page:NowPlayingPage}" Route="NowPlayingPage"/>
+            <ShellContent ContentTemplate="{DataTemplate page:NowPlayingPage}" Route="NowPlayingPage" />
         </Tab>
     </FlyoutItem>
 

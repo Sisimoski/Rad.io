@@ -5,6 +5,16 @@ using RadioBrowser.Net.Services;
 using CommunityToolkit.Maui;
 using RadioBrowser;
 using Rad.io.Client.MAUI.Views;
+using Microsoft.Maui.LifecycleEvents;
+using Rad.io.Client.MAUI.Platforms.Windows;
+#if WINDOWS10_0_17763_0_OR_GREATER
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Windows.Graphics;
+using Microsoft.UI.Xaml;
+using WinRT;
+using Rad.io.Client.MAUI.WinUI;
+#endif
 
 namespace Rad.io.Client.MAUI;
 
@@ -29,6 +39,20 @@ public static class MauiProgram
         builder.Services.AddTransient<ExploreRadiosViewModel>();
         builder.Services.AddSingleton<ExploreCountriesPage>();
         builder.Services.AddSingleton<ExploreCountriesViewModel>();
+
+        builder.ConfigureLifecycleEvents(events =>
+        {
+#if WINDOWS10_0_17763_0_OR_GREATER
+
+            events.AddWindows(wndLifeCycleBuilder =>
+            {
+                wndLifeCycleBuilder.OnWindowCreated(window =>
+                {
+                    window.TryMicaOrAcrylic();
+                });
+            });
+#endif
+        });
 
 #if DEBUG
         builder.Logging.AddDebug();
