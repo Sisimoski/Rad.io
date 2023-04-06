@@ -4,6 +4,9 @@
              xmlns:viewmodel="clr-namespace:Rad.io.Client.MAUI.ViewModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:local="clr-namespace:Rad.io.Client.MAUI"
+             xmlns:segoe="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
+             xmlns:fluentfilled="clr-namespace:MauiIcons.FluentFilled;assembly=MauiIcons.FluentFilled"
+             xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
              x:DataType="viewmodel:NowPlayingViewModel"
              x:Class="Rad.io.Client.MAUI.Views.NowPlayingPanel">
     <ContentView.Resources>
@@ -34,14 +37,14 @@
                     <HorizontalStackLayout>
                         <Image HeightRequest="30"
                                WidthRequest="30"
-                               Source="volume_down_fill.png"/>
+                               Source="{material:Icon Icon=VolumeDown}"/>
                         <Slider Value="{Binding Source={x:Reference mediaElement}, Path=Volume}"
                                 Margin="10"
                                 Minimum="0"
                                 Maximum="1"/>
                         <Image HeightRequest="30"
                                WidthRequest="30"
-                               Source="volume_up_fill.png"/>
+                               Source="{material:Icon Icon=VolumeUp}"/>
 
                     </HorizontalStackLayout>
                     

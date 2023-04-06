@@ -23,7 +23,7 @@
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
@@ -67,6 +67,11 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="RadioBrowser" Version="0.6.1" />
 		<PackageReference Include="RadioBrowser.Net" Version="1.0.1" />
+		<PackageReference Include="AathifMahir.Maui.MauiIcons.Core" Version="1.1.0" />
+		<PackageReference Include="AathifMahir.Maui.MauiIcons.Fluent" Version="1.1.0" />
+		<PackageReference Include="AathifMahir.Maui.MauiIcons.SegoeFluent" Version="1.1.0" />
+		<PackageReference Include="AathifMahir.Maui.MauiIcons.FluentFilled" Version="1.1.0" />
+		<PackageReference Include="AathifMahir.Maui.MauiIcons.Material" Version="1.1.0" />
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -75,6 +80,7 @@
 	  <None Remove="Resources\Images\volume-down-fill.svg" />
 	  <None Remove="Resources\Images\volume-up-fill.svg" />
 	  <None Remove="Resources\Images\play-pause.svg" />
+	  <None Remove="Services\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\pause_fill.svg" />
@@ -88,5 +94,8 @@
 	  <BundleResource Include="Resources\Styles\Colors.xaml" Condition=" '$(EnableDefaultXamlItems)' == 'true' ">
 	    <SubType>Designer</SubType>
 	  </BundleResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Services\" />
 	</ItemGroup>
 </Project>

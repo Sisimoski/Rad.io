@@ -6,7 +6,9 @@ using CommunityToolkit.Maui;
 using RadioBrowser;
 using Rad.io.Client.MAUI.Views;
 using Microsoft.Maui.LifecycleEvents;
-using Rad.io.Client.MAUI.Platforms.Windows;
+using MauiIcons.SegoeFluent;
+using MauiIcons.Material;
+using MauiIcons.FluentFilled;
 #if WINDOWS10_0_17763_0_OR_GREATER
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
@@ -14,6 +16,7 @@ using Windows.Graphics;
 using Microsoft.UI.Xaml;
 using WinRT;
 using Rad.io.Client.MAUI.WinUI;
+using Rad.io.Client.MAUI.Platforms.Windows;
 #endif
 
 namespace Rad.io.Client.MAUI;
@@ -26,13 +29,17 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkitMediaElement()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            });
+            .UseSegoeFluentMauiIcons()
+            .UseFluentFilledMauiIcons()
+            .UseMaterialMauiIcons();
+            //.ConfigureFonts(fonts =>
+            //{
+            //    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+            //    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            //});
         builder.Services.AddRadioBrowserServices("Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15");
         builder.Services.AddSingleton<IRadioBrowserClient>(new RadioBrowserClient(apiUrl: "de1.api.radio-browser.info"));
+
         builder.Services.AddSingleton<NowPlayingPage>();
         builder.Services.AddSingleton<NowPlayingViewModel>();
         builder.Services.AddTransient<ExploreRadiosPage>();

@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Rad.io.Client.MAUI.DesktopShell"
              xmlns:page="clr-namespace:Rad.io.Client.MAUI.Pages"
+             xmlns:segoe="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
              Shell.FlyoutBehavior="Locked"
-             FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}">
+             FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}"
+             FlyoutWidth="{OnPlatform MacCatalyst=250}">
     <Shell.FlyoutHeader>
         <VerticalStackLayout Padding="12">
             <Label Text="Rad.io"
@@ -13,18 +15,18 @@
                    TextColor="{StaticResource Primary}"/>
         </VerticalStackLayout>
     </Shell.FlyoutHeader>
-    <FlyoutItem Title="Explore">
+    <FlyoutItem Title="Explore" Icon="{segoe:Icon Icon=ExploreContent, IconColor={StaticResource Primary}}">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate page:ExploreCountriesPage}"/>
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Library">
+    <FlyoutItem Title="Library" Icon="{segoe:Icon Icon=Library, IconColor={StaticResource Primary}}">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate page:RadioLibraryPage}" Route="RadioLibraryPage"/>
 
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Now Playing">
+    <FlyoutItem Title="Now Playing" Icon="{segoe:Icon Icon=Play, IconColor={StaticResource Primary}}">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate page:NowPlayingPage}" Route="NowPlayingPage" />
         </Tab>

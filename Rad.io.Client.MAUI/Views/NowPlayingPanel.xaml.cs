@@ -11,11 +11,9 @@ public partial class NowPlayingPanel : ContentView
     {
         if (mediaElement.CurrentState == CommunityToolkit.Maui.Core.Primitives.MediaElementState.Playing)
         {
-            //playStopButton.ImageSource = "pause_fill.png";
             mediaElement.Pause();
         } else if (mediaElement.CurrentState == CommunityToolkit.Maui.Core.Primitives.MediaElementState.Paused)
         {
-            //playStopButton.ImageSource = "play_fill.png";
             mediaElement.Play();
         }
         
