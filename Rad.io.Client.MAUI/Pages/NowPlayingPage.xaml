@@ -4,31 +4,47 @@
              x:Class="Rad.io.Client.MAUI.Pages.NowPlayingPage"
              xmlns:viewmodel="clr-namespace:Rad.io.Client.MAUI.ViewModels"
              xmlns:views="clr-namespace:Rad.io.Client.MAUI.Views"
+             xmlns:local="clr-namespace:Rad.io.Client.MAUI"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:NowPlayingViewModel"
-             Title="NowPlayingPage">
-    <VerticalStackLayout Margin="20" Spacing="10">
-        <Frame BorderColor="AliceBlue">
-            <Grid RowDefinitions="Auto, *, Auto">
-                <Label Text="Details"
-                       Grid.Row="0"
-                       Grid.Column="0"/>
-                <Grid Grid.Row="1">
-                    <VerticalStackLayout>
-                        <Label Text="{Binding CurrentStation.Name}"/>
-                        <Label Text="{Binding CurrentStation.Url}"/>
-                    </VerticalStackLayout>
-                    
+             Title="NowPlayingPage"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource Gray950}, Light={StaticResource White}}">
+    <ContentPage.Resources>
+        <local:ListToString x:Key="ListToStringConverter"/>
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*, Auto">
+        <Grid Grid.Row="0"
+              RowDefinitions="Auto, Auto, Auto"
+              ColumnDefinitions="*"
+              RowSpacing="20"
+              Margin="20">
+            <Frame IsClippedToBounds="True"
+                   CornerRadius="20"
+                   HasShadow="True"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="Center"
+                   Margin="0"
+                   Padding="0">
+                <Image Source="{Binding CurrentStation.Favicon}"
+                       Aspect="AspectFill"
+                       WidthRequest="200"
+                       HeightRequest="200"/>
+
+            </Frame>
+            <Frame Grid.Row="1">
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="5">
+                    <Label Grid.Row="0" Text="{Binding CurrentStation.Name}" TextColor="{StaticResource Gray100}" FontFamily="LatoBold" FontSize="36"/>
+                    <BoxView Grid.Row="1" HeightRequest="1" CornerRadius="10"/>
+                    <Label Grid.Row="2" Text="{Binding CurrentStation.Url}" TextColor="{StaticResource Gray300}" FontFamily="LatoRegular" FontSize="Caption"/>
+                    <Label Grid.Row="3" Text="{Binding CurrentStation.Codec}" TextColor="{StaticResource Gray300}" FontFamily="LatoRegular" FontSize="Caption"/>
+                    <Label Grid.Row="4" Text="{Binding CurrentStation.Tags, Converter={StaticResource ListToStringConverter}}" TextColor="{StaticResource Gray300}" FontFamily="LatoRegular" FontSize="Caption"/>
                 </Grid>
-                <Grid Grid.Row="2">
-                    <Label Text="{Binding CurrentStation.Codec}"/>
-                </Grid>
-                
 
-            </Grid>
+            </Frame>
 
-
-        </Frame>
-        <views:NowPlayingPanel/>
-    </VerticalStackLayout>
+        </Grid>
+        <views:NowPlayingPanel Grid.Row="1"/>
+    </Grid>
 </ContentPage>

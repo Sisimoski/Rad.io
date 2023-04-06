@@ -81,6 +81,16 @@
 	  <None Remove="Resources\Images\volume-up-fill.svg" />
 	  <None Remove="Resources\Images\play-pause.svg" />
 	  <None Remove="Services\" />
+	  <None Remove="Resources\Fonts\Lato-Black.ttf" />
+	  <None Remove="Resources\Fonts\Lato-BlackItalic.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Lato-BoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Italic.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Light.ttf" />
+	  <None Remove="Resources\Fonts\Lato-LightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Thin.ttf" />
+	  <None Remove="Resources\Fonts\Lato-ThinItalic.ttf" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\pause_fill.svg" />
@@ -94,6 +104,16 @@
 	  <BundleResource Include="Resources\Styles\Colors.xaml" Condition=" '$(EnableDefaultXamlItems)' == 'true' ">
 	    <SubType>Designer</SubType>
 	  </BundleResource>
+	  <BundleResource Include="Resources\Fonts\Lato-Black.ttf" />
+	  <BundleResource Include="Resources\Fonts\Lato-BlackItalic.ttf" />
+	  <BundleResource Include="Resources\Fonts\Lato-Bold.ttf" />
+	  <BundleResource Include="Resources\Fonts\Lato-BoldItalic.ttf" />
+	  <BundleResource Include="Resources\Fonts\Lato-Italic.ttf" />
+	  <BundleResource Include="Resources\Fonts\Lato-Light.ttf" />
+	  <BundleResource Include="Resources\Fonts\Lato-LightItalic.ttf" />
+	  <BundleResource Include="Resources\Fonts\Lato-Regular.ttf" />
+	  <BundleResource Include="Resources\Fonts\Lato-Thin.ttf" />
+	  <BundleResource Include="Resources\Fonts\Lato-ThinItalic.ttf" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Services\" />

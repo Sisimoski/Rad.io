@@ -8,12 +8,15 @@
              FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}"
              FlyoutWidth="{OnPlatform MacCatalyst=250}">
     <Shell.FlyoutHeader>
-        <VerticalStackLayout Padding="12">
-            <Label Text="Rad.io"
-                   FontAttributes="Bold"
+        <Grid RowDefinitions="*,*" Padding="12">
+            <Label Grid.Row="0"
+                   Text="Rad.io"
+                   FontFamily="LatoBold"
                    FontSize="Title"
                    TextColor="{StaticResource Primary}"/>
-        </VerticalStackLayout>
+            <Entry Placeholder="Search..."
+                   Grid.Row="1"/>
+        </Grid>
     </Shell.FlyoutHeader>
     <FlyoutItem Title="Explore" Icon="{segoe:Icon Icon=ExploreContent, IconColor={StaticResource Primary}}">
         <Tab>

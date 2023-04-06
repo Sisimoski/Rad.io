@@ -13,51 +13,62 @@
         <local:ListToString x:Key="ListToStringConverter"/>
 
     </ContentView.Resources>
-    <Frame BorderColor="Gray">
-        <Grid ColumnDefinitions="*, Auto, *">
-            <HorizontalStackLayout Grid.Column="0">
-                <Image Source="{Binding CurrentStation.Favicon}"
+    <Border Margin="30" StrokeShape="RoundRectangle 15,15,15,15" StrokeThickness="0">
+        <Border.Shadow>
+            <Shadow Brush="Black"
+                    Offset="0, 5"
+                    Radius="20"
+                    Opacity="0.3"/>
+
+        </Border.Shadow>
+        <Frame Padding="20" CornerRadius="0">
+            <Grid ColumnDefinitions="*, Auto, *">
+                <HorizontalStackLayout Grid.Column="0">
+                    <Image Source="{Binding CurrentStation.Favicon}"
                        Margin="0,0,12,0"
                        Aspect="AspectFill"
                        HeightRequest="50"
                        WidthRequest="50"/>
-                <VerticalStackLayout VerticalOptions="Center">
-                    <Label Text="{Binding CurrentStation.Name}" FontAttributes="Bold" FontSize="Large"/>
-                    <Label Text="{Binding CurrentStation.Tags, Converter={StaticResource ListToStringConverter}}" FontSize="Small" TextColor="{StaticResource Gray300}"/>
-                </VerticalStackLayout>
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Label Text="{Binding CurrentStation.Name}" FontAttributes="Bold" FontSize="Large"/>
+                        <Label Text="{Binding CurrentStation.Tags, Converter={StaticResource ListToStringConverter}}" FontSize="Small" TextColor="{StaticResource Gray300}"/>
+                    </VerticalStackLayout>
 
-            </HorizontalStackLayout>
-            <toolkit:MediaElement x:Name="mediaElement" Grid.Column="1"
+                </HorizontalStackLayout>
+                <toolkit:MediaElement x:Name="mediaElement" Grid.Column="1"
                 ShouldShowPlaybackControls="False"
                 ShouldAutoPlay="True"
                 Source="{Binding CurrentStation.Url}"/>
-            <FlexLayout Grid.Column="2"
+                <FlexLayout Grid.Column="2"
                         JustifyContent="End">
-                <HorizontalStackLayout Spacing="5">
-                    <HorizontalStackLayout>
-                        <Image HeightRequest="30"
+                    <HorizontalStackLayout Spacing="5">
+                        <HorizontalStackLayout>
+                            <Image HeightRequest="30"
                                WidthRequest="30"
                                Source="{material:Icon Icon=VolumeDown}"/>
-                        <Slider Value="{Binding Source={x:Reference mediaElement}, Path=Volume}"
+                            <Slider Value="{Binding Source={x:Reference mediaElement}, Path=Volume}"
                                 Margin="10"
                                 Minimum="0"
                                 Maximum="1"/>
-                        <Image HeightRequest="30"
+                            <Image HeightRequest="30"
                                WidthRequest="30"
                                Source="{material:Icon Icon=VolumeUp}"/>
 
-                    </HorizontalStackLayout>
-                    
-                    <ImageButton x:Name="playStopButton"
+                        </HorizontalStackLayout>
+
+                        <ImageButton x:Name="playStopButton"
                                  Clicked="playStopButton_Clicked"
                                  HeightRequest="20"
                                  WidthRequest="20"
-                                 Source="play_pause.png"/>
+                                 Source="{material:Icon Icon=PlayCircleFill}"/>
 
-                </HorizontalStackLayout>
+                    </HorizontalStackLayout>
 
-            </FlexLayout>
+                </FlexLayout>
 
-        </Grid>
-    </Frame>
+            </Grid>
+
+        </Frame>
+        
+    </Border>
 </ContentView>

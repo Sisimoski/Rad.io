@@ -31,12 +31,15 @@ public static class MauiProgram
             .UseMauiCommunityToolkitMediaElement()
             .UseSegoeFluentMauiIcons()
             .UseFluentFilledMauiIcons()
-            .UseMaterialMauiIcons();
-            //.ConfigureFonts(fonts =>
-            //{
-            //    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-            //    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            //});
+            .UseMaterialMauiIcons()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("Lato-Regular.ttf", "LatoRegular");
+                fonts.AddFont("Lato-Bold.ttf", "LatoBold");
+                fonts.AddFont("Lato-Thin.ttf", "LatoThin");
+            });
         builder.Services.AddRadioBrowserServices("Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15");
         builder.Services.AddSingleton<IRadioBrowserClient>(new RadioBrowserClient(apiUrl: "de1.api.radio-browser.info"));
 

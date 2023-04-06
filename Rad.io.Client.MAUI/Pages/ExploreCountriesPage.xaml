@@ -5,9 +5,8 @@
              xmlns:viewmodel="clr-namespace:Rad.io.Client.MAUI.ViewModels"
              xmlns:radios="clr-namespace:RadioBrowser.Models;assembly=RadioBrowser"
              x:DataType="viewmodel:ExploreCountriesViewModel"
-             Shell.NavBarIsVisible="False"
              Title="ExploreCountriesPage"
-             BackgroundColor="{AppThemeBinding Dark={StaticResource Gray950}, Light={StaticResource Gray200}}">
+             BackgroundColor="{AppThemeBinding Dark={StaticResource Gray950}, Light={StaticResource White}}">
     <Grid RowDefinitions="Auto, *" ColumnDefinitions="*">
         <Entry Grid.Row="0"
                Grid.Column="0"
@@ -20,28 +19,7 @@
                         SelectionMode="Single"
                         ItemsSource="{Binding FilteredCountries}"
                         Margin="20">
-            <CollectionView.Header>
-                <Border Background="{StaticResource Gray900}"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="StartAndExpand"
-                        Padding="20"
-                        Margin="10">
-                    <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="10">
-                    <Label Grid.Row="0"
-                           TextColor="{StaticResource Primary}"
-                           Text="Explore"
-                           FontSize="56"/>
-                    <BoxView Grid.Row="1"
-                             Color="{StaticResource Gray600}"
-                             HeightRequest="1"/>
-                        <Label Text="Lorem ipsum."
-                               Grid.Row="2"
-                               TextColor="{StaticResource Gray200}"/>
-                </Grid>
-                </Border>
-                
 
-            </CollectionView.Header>
             <CollectionView.EmptyView>
                 <ActivityIndicator IsRunning="True"/>
             </CollectionView.EmptyView>
