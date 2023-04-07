@@ -6,7 +6,7 @@
              xmlns:radios="clr-namespace:RadioBrowser.Models;assembly=RadioBrowser"
              x:DataType="viewmodel:ExploreCountriesViewModel"
              Title="ExploreCountriesPage"
-             BackgroundColor="{AppThemeBinding Dark={StaticResource Gray950}, Light={StaticResource White}}">
+             BackgroundColor="{AppThemeBinding Dark=Transparent, Light={StaticResource White}}"> <!-- Dark Gray950 -->
     <Grid RowDefinitions="Auto, *" ColumnDefinitions="*">
         <Entry Grid.Row="0"
                Grid.Column="0"
@@ -28,28 +28,36 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="radios:NameAndCount">
-                    <Grid Padding="10">
-                        <Grid.GestureRecognizers>
+                    <Frame Padding="0" BackgroundColor="Transparent" BorderColor="Transparent">
+                        <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:DataType="viewmodel:ExploreCountriesViewModel"
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExploreCountriesViewModel}}, Path=NavigateTo}"
+                                                  CommandParameter="{Binding .}"/> 
+                        </Frame.GestureRecognizers>
+                        <Grid Padding="10">
+                            <!--<Grid.GestureRecognizers>
+                                <TapGestureRecognizer x:DataType="viewmodel:ExploreCountriesViewModel"
                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExploreCountriesViewModel}}, Path=NavigateTo}"
                                                   CommandParameter="{Binding .}"/>
 
-                        </Grid.GestureRecognizers>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            </Grid.GestureRecognizers>-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
 
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
 
-                        </Grid.ColumnDefinitions>
-                        <Label Text="{Binding Name}"/>
-                        <Label Grid.Row="1"
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}"/>
+                            <Label Grid.Row="1"
                                Text="{Binding Stationcount}"
                                TextColor="{StaticResource Gray400}"/>
 
-                    </Grid>
+                        </Grid>
+                    </Frame>
+                    
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

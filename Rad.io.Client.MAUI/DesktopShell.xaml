@@ -5,31 +5,31 @@
              xmlns:page="clr-namespace:Rad.io.Client.MAUI.Pages"
              xmlns:segoe="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
              Shell.FlyoutBehavior="Locked"
-             FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}"
+             
              FlyoutWidth="{OnPlatform MacCatalyst=250}">
     <Shell.FlyoutHeader>
-        <Grid RowDefinitions="*,*" Padding="12">
+        <Grid RowDefinitions="Auto,Auto" Padding="12" RowSpacing="10">
             <Label Grid.Row="0"
                    Text="Rad.io"
                    FontFamily="LatoBold"
-                   FontSize="Title"
-                   TextColor="{StaticResource Primary}"/>
-            <Entry Placeholder="Search..."
-                   Grid.Row="1"/>
+                   FontSize="Small"
+                   Opacity="0.95"/>
+            <SearchBar Placeholder="Search..."
+                       Grid.Row="1"/>
         </Grid>
     </Shell.FlyoutHeader>
-    <FlyoutItem Title="Explore" Icon="{segoe:Icon Icon=ExploreContent, IconColor={StaticResource Primary}}">
+    <FlyoutItem Title="Explore" Icon="{segoe:Icon Icon=ExploreContent}">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate page:ExploreCountriesPage}"/>
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Library" Icon="{segoe:Icon Icon=Library, IconColor={StaticResource Primary}}">
+    <FlyoutItem Title="Library" Icon="{segoe:Icon Icon=Library}">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate page:RadioLibraryPage}" Route="RadioLibraryPage"/>
 
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Now Playing" Icon="{segoe:Icon Icon=Play, IconColor={StaticResource Primary}}">
+    <FlyoutItem Title="Now Playing" Icon="{segoe:Icon Icon=Play}">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate page:NowPlayingPage}" Route="NowPlayingPage" />
         </Tab>

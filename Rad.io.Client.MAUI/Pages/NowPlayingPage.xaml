@@ -8,7 +8,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:NowPlayingViewModel"
              Title="NowPlayingPage"
-             BackgroundColor="{AppThemeBinding Dark={StaticResource Gray950}, Light={StaticResource White}}">
+             BackgroundColor="{AppThemeBinding Dark=Transparent, Light={StaticResource White}}">
     <ContentPage.Resources>
         <local:ListToString x:Key="ListToStringConverter"/>
 

@@ -43,16 +43,18 @@
                         JustifyContent="End">
                     <HorizontalStackLayout Spacing="5">
                         <HorizontalStackLayout>
-                            <Image HeightRequest="30"
-                               WidthRequest="30"
-                               Source="{material:Icon Icon=VolumeDown}"/>
+                            <Image HeightRequest="30" WidthRequest="30"
+                                   Source="{material:Icon Icon=VolumeDown}"
+                                   VerticalOptions="Center"/>
                             <Slider Value="{Binding Source={x:Reference mediaElement}, Path=Volume}"
-                                Margin="10"
-                                Minimum="0"
-                                Maximum="1"/>
-                            <Image HeightRequest="30"
-                               WidthRequest="30"
-                               Source="{material:Icon Icon=VolumeUp}"/>
+                                    Margin="10"
+                                    Minimum="0"
+                                    Maximum="1"
+                                    WidthRequest="80"
+                                    VerticalOptions="Center"/>
+                            <Image HeightRequest="30" WidthRequest="30"
+                                   Source="{material:Icon Icon=VolumeUp}"
+                                   VerticalOptions="Center"/>
 
                         </HorizontalStackLayout>
 
@@ -69,6 +71,6 @@
             </Grid>
 
         </Frame>
-        
+
     </Border>
 </ContentView>
