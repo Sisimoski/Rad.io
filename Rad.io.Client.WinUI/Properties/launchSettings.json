@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Rad.io.Client.WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Rad.io.Client.WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
