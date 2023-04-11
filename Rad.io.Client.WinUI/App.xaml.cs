@@ -40,7 +40,10 @@ namespace Rad.io.Client.WinUI
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         /// 
-
+        public static Window MainWindow
+        {
+            get; set;
+        }
         public new static App Current => (App)Application.Current;
         public IServiceProvider Services { get; private set; }
 
@@ -57,11 +60,14 @@ namespace Rad.io.Client.WinUI
             var serviceCollection = new ServiceCollection();
 
             serviceCollection.AddSingleton<IRadioBrowserClient>(new RadioBrowserClient(apiUrl: "de1.api.radio-browser.info"));
+            
             serviceCollection.AddSingleton<ExploreCountriesPage>();
             serviceCollection.AddSingleton<ExploreCountriesViewModel>();
             serviceCollection.AddSingleton<ExploreRadiosPage>();
             serviceCollection.AddSingleton<ExploreRadiosViewModel>();
             serviceCollection.AddSingleton<NowPlayingViewModel>();
+            serviceCollection.AddSingleton<ShellPage>();
+            serviceCollection.AddSingleton<ShellViewModel>();
 
             return serviceCollection.BuildServiceProvider();
         }
@@ -71,8 +77,14 @@ namespace Rad.io.Client.WinUI
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {   
-            m_window = new MainWindow();
-            m_window.Activate();
+            if (App.MainWindow.Content == null)
+            {
+                App.Current.Services.GetService<ShellPage>();
+                App.MainWindow.
+            }
+
+            //MainWindow = new MainWindow();
+            //MainWindow.Activate();
         }
 
         /// <summary>
