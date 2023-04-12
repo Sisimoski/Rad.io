@@ -18,8 +18,11 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Explore" 
                            Style="{ThemeResource TitleTextBlockStyle}"/>
-        <TextBox Text="{x:Bind CountriesViewModel.EntryQuery, Mode=OneWay}" Grid.Row="1" PlaceholderText="Search countries..."/>
-
+        <TextBox x:Name="FilterCountriesTextBox"
+            Text="{x:Bind CountriesViewModel.EntryQuery, Mode=OneWay}" 
+                 Grid.Row="1" 
+                 PlaceholderText="Search countries..."/>
+        <ProgressRing Grid.Row="2" IsActive="{x:Bind CountriesViewModel.IsLoading, Mode=OneWay}"/>
         <ListView x:Name="CountriesListView"
             Grid.Row="2"
                   ItemsSource="{x:Bind CountriesViewModel.Countries, Mode=OneWay}"

@@ -77,8 +77,6 @@ namespace Rad.io.Client.WinUI
         {
             MainWindow = new MainWindow();
             MainWindow.Activate();
-            //MicaBackground mica = new MicaBackground(MainWindow);
-            //mica.TrySetMicaBackdrop();
         }
 
         /// <summary>

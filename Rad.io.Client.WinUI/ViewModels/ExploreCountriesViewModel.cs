@@ -20,6 +20,7 @@ namespace Rad.io.Client.WinUI.ViewModels
         private List<NameAndCount> filteredCountries;
         private NameAndCount selectedItem;
         private string entryQuery;
+        private bool isLoading;
 
         public List<NameAndCount> Countries
         {
@@ -58,6 +59,16 @@ namespace Rad.io.Client.WinUI.ViewModels
             }
         }
 
+        public bool IsLoading
+        {
+            get => isLoading;
+            set
+            {
+                isLoading = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public ExploreCountriesViewModel(IRadioBrowserClient radioBrowserClient, INavigationService navigationService)
         {
             this.radioBrowserClient = radioBrowserClient;
@@ -66,6 +77,7 @@ namespace Rad.io.Client.WinUI.ViewModels
 
         public async Task InitializeDataAsync()
         {
+            IsLoading = true;
             try
             {
                 Countries = await radioBrowserClient.Lists.GetCountriesAsync();
@@ -78,6 +90,7 @@ namespace Rad.io.Client.WinUI.ViewModels
             {
                 Debug.WriteLine(e);
             }
+            IsLoading = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
