@@ -36,7 +36,7 @@ public sealed partial class ShellPage : Page
         
         this.InitializeComponent();
 
-        RootFrame.Content = new ExploreCountriesPage();
+        RootFrame.Navigate(typeof(ExploreCountriesPage));
     }
 
     private void PlayButton_Click(object sender, RoutedEventArgs e)
@@ -60,15 +60,6 @@ public sealed partial class ShellPage : Page
                 break;
         }
     }
-    private void NavigationViewControl_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-    {
-        var item = (NavigationViewItem)args.SelectedItem;
-        if ((string)item.Tag == "Explore")
-        {
-            RootFrame.Navigate(typeof(ExploreCountriesPage));
-        }
-    }
-
     private void NavigationViewControl_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
     {
         if (RootFrame.CanGoBack)

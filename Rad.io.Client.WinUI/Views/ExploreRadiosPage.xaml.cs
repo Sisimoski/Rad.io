@@ -38,9 +38,9 @@ namespace Rad.io.Client.WinUI.Views
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            ExploreRadiosViewModel.SelectedCountry = e.Parameter as NameAndCount;
             base.OnNavigatedTo(e);
-            //await ExploreRadiosViewModel.InitializeDataAsync();
+            ExploreRadiosViewModel.SelectedCountry = e.Parameter as NameAndCount;
+            await ExploreRadiosViewModel.InitializeDataAsync();
         }
 
         private void RadiosListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

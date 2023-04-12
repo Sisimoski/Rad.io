@@ -70,6 +70,7 @@ public class ExploreRadiosViewModel : INotifyPropertyChanged
     {
         try
         {
+            if (SelectedCountry == null) return;
             Stations = await radioBrowserClient.Search.AdvancedAsync(new AdvancedSearchOptions
             {
                 Country = SelectedCountry.Name

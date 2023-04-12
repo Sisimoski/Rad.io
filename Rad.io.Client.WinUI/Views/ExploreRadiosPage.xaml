@@ -15,9 +15,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Explore" 
+        <TextBlock Grid.Row="0" Text="Radios" 
                            Style="{ThemeResource TitleTextBlockStyle}"/>
-        <TextBox Text="{x:Bind ExploreRadiosViewModel.EntryQuery, Mode=OneWay}" Grid.Row="1" PlaceholderText="Search countries..."/>
+        <TextBox Text="{x:Bind ExploreRadiosViewModel.EntryQuery, Mode=OneWay}" Grid.Row="1" PlaceholderText="Search radios..."/>
 
         <ListView x:Name="RadiosListView" Grid.Row="2"
                   ItemsSource="{x:Bind ExploreRadiosViewModel.Stations, Mode=OneWay}"

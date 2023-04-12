@@ -23,9 +23,9 @@
         <ListView x:Name="CountriesListView"
             Grid.Row="2"
                   ItemsSource="{x:Bind CountriesViewModel.Countries, Mode=OneWay}"
-                  SelectionMode="Single"
-                  SelectionChanged="ListView_SelectionChanged"
-                  SelectedItem="{x:Bind CountriesViewModel.SelectedItem}">
+                  SelectionMode="None"
+                  IsItemClickEnabled="True"
+                  ItemClick="CountriesListView_ItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="nameandcount:NameAndCount">
                     <Grid RowSpacing="4" Margin="8">

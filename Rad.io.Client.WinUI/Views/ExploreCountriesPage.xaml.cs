@@ -38,11 +38,6 @@ namespace Rad.io.Client.WinUI.Views
             base.OnNavigatedTo(e);
             await CountriesViewModel.InitializeDataAsync();
         }
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            CountriesViewModel.SelectedItem = (RadioBrowser.Models.NameAndCount)CountriesListView.SelectedItem;
-            this.Frame.Navigate(typeof(ExploreRadiosPage), CountriesViewModel.SelectedItem);
-        }
 
         private void CountriesListView_ItemClick(object sender, ItemClickEventArgs e)
         {
