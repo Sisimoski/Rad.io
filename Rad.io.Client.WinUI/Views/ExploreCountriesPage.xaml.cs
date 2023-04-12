@@ -31,7 +31,6 @@ namespace Rad.io.Client.WinUI.Views
         {
             this.InitializeComponent();
             this.CountriesViewModel = App.Current.Services.GetService<ExploreCountriesViewModel>();
-            this.DataContext = null;
             this.DataContext = CountriesViewModel;
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
