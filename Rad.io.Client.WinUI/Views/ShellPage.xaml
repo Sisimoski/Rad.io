@@ -54,8 +54,8 @@
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Explore"/>
                 <NavigationViewItem Icon="Globe" Content="Explore" Tag="Explore" />
-                <NavigationViewItem Icon="Library" Content="Library" Tag="Library" />
-                <NavigationViewItem Icon="Play" Content="Now Playing" Tag="Now Playing" />
+                <!--<NavigationViewItem Icon="Library" Content="Library" Tag="Library" />
+                <NavigationViewItem Icon="Play" Content="Now Playing" Tag="Now Playing" />-->
             </NavigationView.MenuItems>
             <Grid Margin="56,24,56,0">
                 <Grid.RowDefinitions>
@@ -67,7 +67,9 @@
                 <MediaPlayerElement x:Name="MediaPlayerElement" 
                                     AreTransportControlsEnabled="True" 
                                     Grid.Row="1" 
-                                    Source="{x:Bind NowPlayingViewModel.CurrentStation.Url.AbsoluteUri}"/>
+                                    Source="{x:Bind NowPlayingViewModel.CurrentStation.Url.AbsoluteUri}">
+
+                </MediaPlayerElement>
                 <Button Grid.Row="2" x:Name="PlayButton" Content="Play" Click="PlayButton_Click"/>
             </Grid>
 

@@ -25,12 +25,20 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="radiobrowsermodels:StationInfo">
                     <Grid RowSpacing="4" Margin="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="{x:Bind Name}"/>
-                        <TextBlock Grid.Row="1" Text="{x:Bind Url}"/>
+                        <Image Grid.RowSpan="2" Width="42" Height="42" 
+                               Margin="0,0,12,0"
+                               Stretch="UniformToFill"
+                               Source="{x:Bind Favicon.AbsoluteUri}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{x:Bind Name}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind Url}"/>
                     </Grid>
 
                 </DataTemplate>
