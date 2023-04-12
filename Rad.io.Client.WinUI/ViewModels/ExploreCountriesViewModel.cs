@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Rad.io.Client.WinUI.Interfaces;
 using RadioBrowser;
 using RadioBrowser.Models;
 
@@ -14,6 +15,7 @@ namespace Rad.io.Client.WinUI.ViewModels
     public class ExploreCountriesViewModel : INotifyPropertyChanged
     {
         private readonly IRadioBrowserClient radioBrowserClient;
+        private readonly INavigationService navigationService;
         private List<NameAndCount> _countries;
         private List<NameAndCount> filteredCountries;
         private NameAndCount selectedItem;
@@ -56,23 +58,21 @@ namespace Rad.io.Client.WinUI.ViewModels
             }
         }
 
-        public ExploreCountriesViewModel(IRadioBrowserClient radioBrowserClient)
+        public ExploreCountriesViewModel(IRadioBrowserClient radioBrowserClient, INavigationService navigationService)
         {
             this.radioBrowserClient = radioBrowserClient;
+            this.navigationService = navigationService;
         }
 
         public async Task InitializeDataAsync()
         {
             try
             {
-                
                 Countries = await radioBrowserClient.Lists.GetCountriesAsync();
                 foreach (var result in Countries)
                 {
                     Debug.WriteLine(result.Name);
                 }
-                
-
             }
             catch (Exception e)
             {

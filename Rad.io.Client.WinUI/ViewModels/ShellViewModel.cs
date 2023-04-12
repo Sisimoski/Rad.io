@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Navigation;
+using Rad.io.Client.WinUI.Interfaces;
 using Rad.io.Client.WinUI.Services;
 
 namespace Rad.io.Client.WinUI.ViewModels;
@@ -16,6 +17,10 @@ public class ShellViewModel : INotifyPropertyChanged
     private bool isBackEnabled;
     private object? selected;
 
+    public INavigationService NavigationService
+    {
+        get;
+    }
     public bool IsBackEnabled
     {
         get => isBackEnabled;
@@ -34,8 +39,8 @@ public class ShellViewModel : INotifyPropertyChanged
             RaisePropertyChanged();
         }
     }
-    public ShellViewModel()
+    public ShellViewModel(INavigationService navigationService)
     {
-        
+        NavigationService = navigationService;
     }
 }

@@ -24,6 +24,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Rad.io.Client.WinUI.Helpers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -40,14 +41,9 @@ namespace Rad.io.Client.WinUI
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         /// 
-        public static Window MainWindow
-        {
-            get; set;
-        }
+        public static Window MainWindow { get; set; }
         public new static App Current => (App)Application.Current;
         public IServiceProvider Services { get; private set; }
-
-        public static Frame ContentFrame { get; set; }
         public App()
         {
             Services = RegisterServices();
@@ -61,6 +57,8 @@ namespace Rad.io.Client.WinUI
 
             serviceCollection.AddSingleton<IRadioBrowserClient>(new RadioBrowserClient(apiUrl: "de1.api.radio-browser.info"));
             
+            serviceCollection.AddSingleton<INavigationService, NavigationService>();
+
             serviceCollection.AddSingleton<ExploreCountriesPage>();
             serviceCollection.AddSingleton<ExploreCountriesViewModel>();
             serviceCollection.AddSingleton<ExploreRadiosPage>();
@@ -76,15 +74,11 @@ namespace Rad.io.Client.WinUI
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
-        {   
-            if (App.MainWindow.Content == null)
-            {
-                App.Current.Services.GetService<ShellPage>();
-                App.MainWindow.
-            }
-
-            //MainWindow = new MainWindow();
-            //MainWindow.Activate();
+        {
+            MainWindow = new MainWindow();
+            MainWindow.Activate();
+            MicaBackground mica = new MicaBackground(MainWindow);
+            mica.TrySetMicaBackdrop();
         }
 
         /// <summary>
@@ -96,7 +90,5 @@ namespace Rad.io.Client.WinUI
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
-
-        private Window m_window;
     }
 }

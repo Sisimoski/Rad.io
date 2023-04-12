@@ -31,6 +31,7 @@ namespace Rad.io.Client.WinUI.Views
         {
             this.InitializeComponent();
             this.CountriesViewModel = App.Current.Services.GetService<ExploreCountriesViewModel>();
+            this.DataContext = null;
             this.DataContext = CountriesViewModel;
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -38,17 +39,16 @@ namespace Rad.io.Client.WinUI.Views
             base.OnNavigatedTo(e);
             await CountriesViewModel.InitializeDataAsync();
         }
-
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CountriesViewModel.SelectedItem = (RadioBrowser.Models.NameAndCount)CountriesListView.SelectedItem;
-            //this.Frame.Navigate(typeof(ExploreRadiosPage), CountriesViewModel.SelectedItem);
+            this.Frame.Navigate(typeof(ExploreRadiosPage), CountriesViewModel.SelectedItem);
         }
 
         private void CountriesListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             NameAndCount selectedItem = e.ClickedItem as NameAndCount;
-            App.ContentFrame.Navigate(typeof(ExploreRadiosPage), selectedItem);
+            this.Frame.Navigate(typeof(ExploreRadiosPage), selectedItem);
         }
     }
 }
